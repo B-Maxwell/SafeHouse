@@ -27,7 +27,7 @@ public class SafeHouseController {
     private HouseRepository houses;
 
     // register a new user
-    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    @RequestMapping(path = "/users", method = RequestMethod.POST)
     public ResponseEntity<?> addUser(@RequestBody Map<String, String> json) {
         String username = json.get("username");
         String password = json.get("password");
@@ -46,22 +46,24 @@ public class SafeHouseController {
 
     // user login
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> login(@RequestBody Map<String, String> json) {
-        String username = json.get("username");
-        String password = json.get("password");
+    public /*ResponseEntity<?>*/String login(/*@RequestBody Map<String, String> json*/) {
 
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
-
-        if ((username != null && !username.isEmpty()) && (password != null && !password.isEmpty())) {
-            User user = users.findOneByName(username);
-            if (user != null) {
-                if (user.verifyPassword(password)) {
-                    return new ResponseEntity<>(TokenUtil.getJwt(username), HttpStatus.OK);
-                }
-            }
-        }
-        return new ResponseEntity<>("Bad login.", HttpStatus.UNAUTHORIZED);
+//        String username = json.get("username");
+//        String password = json.get("password");
+//
+//        System.out.println("Username: " + username);
+//        System.out.println("Password: " + password);
+//
+//        if ((username != null && !username.isEmpty()) && (password != null && !password.isEmpty())) {
+//            User user = users.findOneByName(username);
+//            if (user != null) {
+//                if (user.verifyPassword(password)) {
+//                    return new ResponseEntity<>( HttpStatus.OK);
+//                }
+//            }
+//        }
+//        return new ResponseEntity<>("Bad login.", HttpStatus.UNAUTHORIZED);
+        return "Success";
     }
 
     // get user Todo

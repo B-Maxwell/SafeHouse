@@ -6,7 +6,6 @@ import com.theironyard.entities.Item;
 import com.theironyard.entities.User;
 import com.theironyard.services.HouseRepository;
 import com.theironyard.services.UserRepository;
-import com.theironyard.utilities.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

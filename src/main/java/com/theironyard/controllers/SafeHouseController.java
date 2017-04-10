@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -66,6 +67,22 @@ public class SafeHouseController {
         return "Success";
     }
 
+    // return user's houses Todo
+    @RequestMapping(path = "/houses", method = RequestMethod.GET)
+    public List<House> getHouses() {
+        return null;
+    }
+
+    // add a new house Todo
+    @RequestMapping(path = "/houses", method = RequestMethod.POST)
+    public void addHouse(@RequestBody Map<String, String> json) {
+        String username = json.get("username");
+        String houseName = json.get("houseName");
+
+        User user = users.findOneByName(username);
+        houses.save(new House(houseName, user));
+    }
+
     // get user Todo
     @RequestMapping(path = "/user", method = RequestMethod.GET)
     public void getUser(@RequestBody Map<String, String> json) {
@@ -76,16 +93,6 @@ public class SafeHouseController {
     @RequestMapping(path = "/house", method = RequestMethod.GET)
     public void getHouse(@RequestBody Map<String, String> json) {
         System.out.println(json);
-    }
-
-    // add a new house Todo
-    @RequestMapping(path = "/house", method = RequestMethod.POST)
-    public void addHouse(@RequestBody Map<String, String> json) {
-        String username = json.get("username");
-        String houseName = json.get("houseName");
-
-        User user = users.findOneByName(username);
-        houses.save(new House(houseName, user));
     }
 
     // remove a house Todo

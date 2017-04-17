@@ -50,6 +50,7 @@ public class AmazonUtil {
             }
 
         } catch (Exception ex) {
+            ex.printStackTrace();
             return "Please verify search parameters";
         }
 

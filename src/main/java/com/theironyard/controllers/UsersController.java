@@ -43,7 +43,7 @@ public class UsersController {
         User user = new User(username, bCryptPasswordEncoder.encode(password));
 
         try {
-            users.save(user);
+            user = users.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
             return new ResponseEntity<>("Invalid username or password", HttpStatus.BAD_REQUEST);

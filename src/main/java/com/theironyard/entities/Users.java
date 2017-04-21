@@ -29,8 +29,8 @@ public final class Users {
         this.houseRepo = houseRepo;
     }
 
-    public void save(User user) throws DataIntegrityViolationException {
-        userRepo.save(user);
+    public User save(User user) throws DataIntegrityViolationException {
+        return userRepo.save(user);
     }
 
     public User findByName(String name) {

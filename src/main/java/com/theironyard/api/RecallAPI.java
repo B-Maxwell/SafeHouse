@@ -77,7 +77,7 @@ public class RecallAPI {
             recallItem.recallDescription = item.getBrand() + " " + item.getModel();
         } else {
             String[] arr = item.getTitle().split("\\s+");
-            recallItem.recallDescription = arr[0]+ " " + arr[1] + " " + arr[2];
+            recallItem.recallDescription = arr[0]+ " " + arr[1];
         }
 
         JSONArray recallResults = recallItem.submit();

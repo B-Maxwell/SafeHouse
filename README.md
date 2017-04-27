@@ -15,4 +15,4 @@ Matthew McGarvey https://github.com/matthewmcgarvey
 
 Ben Maxwell https://github.com/B-Maxwell
 
-API can be found at https://github.com/matthewmcgarvey/SafeHouse or https://github.com/B-Maxwell/safehouse
+The frontend can be found at https://github.com/daltenbern/safehouse

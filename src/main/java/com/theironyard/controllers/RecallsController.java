@@ -7,10 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping("/recalls")
@@ -22,8 +21,17 @@ public class RecallsController {
 
     // Get recall for an item
     @RequestMapping(path = "/{itemId}", method = RequestMethod.GET)
-    public ResponseEntity<?> searchRecall(@PathVariable Integer itemId) {
+    public ResponseEntity<?> searchRecallByItemId(@PathVariable Integer itemId) {
         Item item = items.findItemById(itemId);
+        return new ResponseEntity<>(RecallAPI.checkRecall(item), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> searchRecallByItemInfo(@RequestParam String title, @RequestParam String brand, @RequestParam String model) {
+        Item item = new Item();
+        item.setTitle(title);
+        item.setBrand(brand);
+        item.setModel(model);
         return new ResponseEntity<>(RecallAPI.checkRecall(item), HttpStatus.OK);
     }
 }
